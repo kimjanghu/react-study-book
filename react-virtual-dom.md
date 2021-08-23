@@ -57,7 +57,26 @@
 
 ## 3. How does React use Virtual DOM
 
+---
 
+* React의 모든 UI Component들은 각각의 상태를 가지고 있다.
+* React는 Observable 패턴을 따르며 상태의 변화를 감지한다.
+* 따라서 React는 Component의 상태가 변경될 때, Virtual DOM Tree를 업데이트한다.
+* Virtual DOM이 업데이트되면, 이전의 Virtual DOM과 비교한다. (diffing)
+* 변경된 Virtual DOM의 객체를 알면, Real DOM에서 해당 객체만 업데이트한다.
+* 이러한 과정은 추상되어있기 때문에, 실제 개발자가 관여하지 않아도된다.
+* 개발자는 Component의 상태를 변경하기만 하면 되며, 나머지는 React에서 처리한다.
+* 결과적으로
+  * Component의 state 혹은 props가 업데이트 될 때마다, 변경을 감지하여 Compoent를 re-render한다.
+  * 이 때, Virtual DOM을 업데이트하고, 변경된 객체만 Real DOM에 반영한다.
+
+
+
+### Batch Update
+
+* React는 Real DOM 업데이트 시 Batch Update 매카니즘을 따른다.
+* 모든 작은 상태의 변화가 있을 때마다 업데이트를 보내는 대신 Real DOM에 대한 업데이트만 일괄적으로 보낸다.
+* UI re-painting 작업은 비용이 많이 들며, React는 효율적으로 Real DOM이 Batch된 업데이트만 UI에서 re-painting하도록 보장한다.
 
 
 
